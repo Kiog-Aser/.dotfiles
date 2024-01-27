@@ -1,0 +1,10 @@
+#!/bin/sh
+
+curl -s "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD&e=CCCAGG" |
+	jq --raw-output '"The current stats of ETH is (in USD): 
+\(.DISPLAY.ETH.USD.PRICE)		Price
+\(.DISPLAY.ETH.USD.CHANGEPCTDAY)% 			Daily change
+\(.DISPLAY.ETH.USD.CHANGEDAY)  		Daily change
+\(.DISPLAY.ETH.USD.HIGHDAY) 		24h High
+\(.DISPLAY.ETH.USD.LOWDAY) 		24h Low
+\(.DISPLAY.ETH.USD.MKTCAP) 		Market Cap"'

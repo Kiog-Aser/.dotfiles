@@ -1,0 +1,98 @@
+#!/bin/bash
+
+# Function to display language options
+choose_language() {
+    echo "Choose a course:"
+    echo "1. Introduction to French"
+    echo "2. Complete Swahili"
+    echo "3. Introduction to Italian"
+    echo "4. Complete Greek"
+    echo "5. Complete German"
+    echo "6. Introduction to Turkish"
+    echo "7. Introduction to Arabic"
+    echo "8. Complete Spanish"
+    # Add more languages as needed
+
+    read -p "Enter the number corresponding to your choice: " lang_choice
+
+    case $lang_choice in
+        1)
+            playlist_id="PLeA5t3dWTWvvZln1pJ-Ij8xOmS_3zH-4j"
+            ;;
+        2)
+            playlist_id="PLeA5t3dWTWvt5ErpdgPdznCwq3FeFNLim"
+            ;;
+        3)
+            playlist_id="PLeA5t3dWTWvuTl3qVy9X_DaoFBbmXp1W3"
+            ;;
+        4)
+            playlist_id="PLeA5t3dWTWvtWkl4oOV8J9SMB7L9N9Ogt"
+            ;;
+        5)
+            playlist_id="PLeA5t3dWTWvtU5nXIBbV1F_dy9VIyGDWb"
+            ;;
+        6)
+            playlist_id="PLeA5t3dWTWvsv6ZRD0BGvleRS62Cya3A6"
+            ;;
+        7)
+            playlist_id="PLeA5t3dWTWvsP3fz7hKKaJtWB1eHJ"
+            ;;
+        8)
+            playlist_id="PLeA5t3dWTWvvwf5fw0Nl7mVk0OUjP1Ln2"
+            ;;
+        # Add more cases as needed
+        *)
+            echo "Invalid choice. Exiting."
+            exit 1
+            ;;
+    esac
+}
+
+
+# Function to choose and play an episode
+choose_and_play_episode() {
+    echo "Fetching episodes for the selected language..."
+    # Fetch episodes for the selected language (replace 'YOUR_API_KEY' with your actual YouTube API key)
+    response=$(curl -s "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=$playlist_id&maxResults=50&key=AIzaSyDXSXbQSGECwijH7TaAK9RtfJAOJx062G0")
+
+
+    # Extract episodes from the response
+    episodes=$(echo "$response" | jq -r '.items[].snippet.title')
+
+    # Check if episodes are null
+    if [ "$episodes" == "null" ]; then
+        echo "Error: No episodes found for the selected language. Exiting."
+        exit 1
+    fi
+
+    # Display episode options with line numbers and more compact format
+    echo "Episode Options:"
+    IFS=$'\n' # Set Internal Field Separator to newline
+    count=1
+    for episode in $episodes; do
+        # Remove specific parts of the episode title
+        compact_episode=$(echo "$episode" | sed -E 's/ - Language Transfer, The Thinking Method//')
+        echo "$count) $compact_episode"
+        ((count++))
+    done
+
+    # Prompt the user to choose an episode
+    read -p "Enter the number corresponding to your choice: " episode_choice
+
+    # Validate the user's choice
+    if [ $episode_choice -ge 1 ] && [ $episode_choice -le $count ]; then
+        # Get the video ID for the selected episode
+        video_id=$(echo "$response" | jq -r ".items[$((episode_choice - 1))].snippet.resourceId.videoId")
+        # Play the selected episode using mpv
+        mpv "https://www.youtube.com/watch?v=$video_id" > /dev/null 2>&1 &
+    else
+        echo "Invalid choice. Exiting."
+        exit 1
+    fi
+}
+
+
+
+# Main script execution
+choose_language
+choose_and_play_episode
