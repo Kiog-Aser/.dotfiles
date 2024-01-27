@@ -1,0 +1,10 @@
+#!/bin/sh
+
+curl -s "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=AVAX&tsyms=USD&e=CCCAGG" |
+	jq --raw-output '"The current stats of AVAX is (in USD): 
+\(.DISPLAY.AVAX.USD.PRICE)		Price
+\(.DISPLAY.AVAX.USD.CHANGEPCTDAY)% 			Daily change
+\(.DISPLAY.AVAX.USD.CHANGEDAY)  		Daily change
+\(.DISPLAY.AVAX.USD.HIGHDAY) 		24h High
+\(.DISPLAY.AVAX.USD.LOWDAY) 		24h Low
+\(.DISPLAY.AVAX.USD.MKTCAP) 		Market Cap"'

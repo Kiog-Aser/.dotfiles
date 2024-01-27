@@ -1,0 +1,10 @@
+#!/bin/sh
+
+curl -s "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ATOM&tsyms=USD&e=CCCAGG" |
+	jq --raw-output '"The current stats of ATOM is (in USD): 
+\(.DISPLAY.ATOM.USD.PRICE)		Price
+\(.DISPLAY.ATOM.USD.CHANGEPCTDAY)% 			Daily change
+\(.DISPLAY.ATOM.USD.CHANGEDAY)  		Daily change
+\(.DISPLAY.ATOM.USD.HIGHDAY) 		24h High
+\(.DISPLAY.ATOM.USD.LOWDAY) 		24h Low
+\(.DISPLAY.ATOM.USD.MKTCAP) 		Market Cap"'

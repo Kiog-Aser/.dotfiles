@@ -1,0 +1,10 @@
+#!/bin/sh
+
+curl -s "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=AKT&tsyms=USD&e=CCCAGG" |
+	jq --raw-output '"The current stats of AKT is (in USD): 
+\(.DISPLAY.AKT.USD.PRICE)		Price
+\(.DISPLAY.AKT.USD.CHANGEPCTDAY)% 			Daily change
+\(.DISPLAY.AKT.USD.CHANGEDAY)  		Daily change
+\(.DISPLAY.AKT.USD.HIGHDAY) 		24h High
+\(.DISPLAY.AKT.USD.LOWDAY) 		24h Low
+\(.DISPLAY.AKT.USD.MKTCAP) 		Market Cap"'
