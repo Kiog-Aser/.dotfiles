@@ -7,3 +7,7 @@ Here are some of the bash scripts I use a lot.
 - LT to get a language transfer CLI
 
   And my .bashrc
+
+mimosa dark as my conky.
+
+used (this video)[https://www.youtube.com/watch?v=80YHVuv-eVs] to setup mx linux.
