@@ -8,7 +8,8 @@ Here are some of the bash scripts I use a lot.
 
   And my .bashrc
 
-mimosa dark as my conky.
+[YT-Focus](https://github.com/Kiog-Aser/YT-Focus/) to watch YouTube.
+Mimosa dark as my conky.
 
 I used [this video](https://www.youtube.com/watch?v=80YHVuv-eVs) to setup mx linux.
 
