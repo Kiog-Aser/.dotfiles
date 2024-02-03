@@ -10,4 +10,4 @@ Here are some of the bash scripts I use a lot.
 
 mimosa dark as my conky.
 
-used (this video)[https://www.youtube.com/watch?v=80YHVuv-eVs] to setup mx linux.
+used (https://www.youtube.com/watch?v=80YHVuv-eVs)[this video] to setup mx linux.
