@@ -1,8 +1,9 @@
 ---
-title: Sample
-tags: [programming, engineer]
+title: Title
+subtitle: Subtitle
+tags: [social media, mental health, productivity, focus, happinnes]
 publishstatus: draft
-canonicalurl: http://jamietalbot.com/posts/liverpool-fc
+canonicalurl: https://www.milh.tech/blog/
 ---
 
-# Medium post template.
+![Photo by x on [Unsplash](https://www.unsplash.com/photos/) ](path) 
