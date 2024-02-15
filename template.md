@@ -9,8 +9,7 @@ publishstatus: draft
 
 [Image]
 
-Thanks for reading
-==================
+## Thanks for reading
 
 -   👏 Please clap for the story (50 claps) to help the article to be spread
 
