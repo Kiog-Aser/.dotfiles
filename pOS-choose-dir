@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Function to list all folders in ~/Documents/pdfs
+list_folders() {
+    find ~/Documents/pdfs -mindepth 1 -maxdepth 1 -type d -printf "%f\n"
+}
+
+# Function to list all PDFs in a selected folder
+list_pdfs() {
+    find ~/Documents/pdfs/"$1" -type f -name "*.pdf" -printf "%f\n"
+}
+
+# Function to open PDF in zathura
+open_pdf() {
+    zathura ~/Documents/pdfs/"$1"/"$2" &
+}
+
+# Main function
+main() {
+    # Initial selection of folders
+    selected_folder=$(list_folders | rofi -dmenu -p "Select a folder")
+
+    # If no folder is selected, exit
+    [[ -z $selected_folder ]] && exit
+
+    # List PDFs in the selected folder
+    selected_pdf=$(list_pdfs "$selected_folder" | rofi -dmenu -p "Select a PDF")
+
+    # If no PDF is selected, exit
+    [[ -z $selected_pdf ]] && exit
+
+    # Open the selected PDF in zathura
+    open_pdf "$selected_folder" "$selected_pdf"
+}
+
+# Call the main function
+main
+
