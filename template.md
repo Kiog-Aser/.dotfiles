@@ -13,7 +13,7 @@ publishstatus: draft
 
 -   👏 Please clap for the story (20+ claps) to help the article to be spread
 
--   🌐 Share the storywith one friend
+-   🌐 Share the story with one friend
 
 -   ✉️ [Subscribe](https://milhoornaert.medium.com/subscribe) to get emails for my posts.
 
